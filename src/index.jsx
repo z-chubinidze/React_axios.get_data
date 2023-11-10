@@ -27,7 +27,10 @@ function App() {
             })
 
     };
-
+ const deleteRow = (id) => {
+        setData((prevData) => prevData.filter((item) => item.id !== id));
+       
+    };
 
     return (
         <div className="container  mt-5">
@@ -47,7 +50,7 @@ function App() {
                                     <th >title</th>
                                     <th >userId</th>
                                     <th >completed</th>
-
+                                    <th>remove</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,7 +62,11 @@ function App() {
                                             <td >{item.title}</td>
                                             <td className={"text-center"}>{item.userId}</td>
                                             <td className={(item.completed == false) ? "bg-danger text-center" : "bg-success text-center"}>{item.completed ? "ჭეშმარიტია" : "მცდარია"} </td>
-
+                                            <td>
+                                                <button className="btn btn-danger" onClick={() => deleteRow(item.id)}>
+                                                    DELETE
+                                                </button>
+                                            </td>
                                         </tr>
 
                                     )
